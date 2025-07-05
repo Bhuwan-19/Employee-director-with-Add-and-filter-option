@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Directory</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Employee Directory</h1>
+    <form action="/" method="post">
+        <input type="text" name="search" placeholder="Search Name" value="{{ search }}">
+        <input type="text" name="department" placeholder="Search Department" value="{{ department }}">
+        <button type="submit">Filter</button>
+    </form>
+
+    <br><form action="/add" method="post">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone" placeholder="Phone" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <button type="submit">Add Employee</button>
+    </form>
+
+    <h2>Employees</h2>
+    <table>
+        <tr><th>Name</th><th>Email</th><th>Phone</th><th>Department</th></tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp[1] }}</td>
+            <td>{{ emp[2] }}</td>
+            <td>{{ emp[3] }}</td>
+            <td>{{ emp[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
